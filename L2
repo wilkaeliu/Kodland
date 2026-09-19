@@ -1,0 +1,19 @@
+import time
+import random
+elements = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@$%^&*()_+-=[]|;':,.<>/?"
+
+password = ""
+
+for i in range (12):
+    password += random.choice(elements)
+
+print(password)
+
+
+def helloworld(texto):
+    print(texto)
+
+while True:
+    helloworld("print")
+    time.sleep(0.5)
+
