@@ -1,0 +1,71 @@
+import discord
+import ollama
+import asyncio
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user.name} ({bot.user.id})')
+    print('------')
+
+@bot.command()
+async def Hola(ctx):
+    await ctx.send('helloWorld!("print")')
+
+@bot.command()
+async def ia(ctx, *, pregunta):
+    respuesta = await asyncio.to_thread(
+        ollama.chat,
+        model="gemma3:4b",
+        messages=[{"role": "user", "content": pregunta}]
+    )
+    await ctx.send(respuesta["message"]["content"][:2000])
+
+@bot.command()
+async def como_reciclar_botellas(ctx):
+    await ctx.send('Puedes reciclar botella usandolas como macetas, llenando la botella con tierra y luego puedes poner la planta.')
+
+
+@bot.command()
+async def que_hago_con_la_basura(ctx):
+    await ctx.send('Puedes tirar basura en botes de basura, o puedes reciclar la basura')
+
+@bot.command()
+async def como_ahorro_energia(ctx):
+    await ctx.send('Puedes apagar las luces de un lugar si ya no vas a estar ahí, también puedes apagar dispositivos que ya no uses.')
+
+
+@bot.command()
+async def hola(ctx):
+    await ctx.send(f'Hola! Soy {bot.user}.')
+
+@bot.command()
+async def que_puedo_hacer_para_mejorar_el_medio_ambiente(ctx):
+    await ctx.send("Puedes reducir el uso de plástico, reciclar, usar transporte público o bicicleta, plantar árboles y ahorrar energía.")
+
+@bot.command()
+async def que_es_la_contaminacion(ctx):
+    await ctx.send("La contaminación es la introducción de sustancias o elementos nocivos en el medio ambiente, que pueden causar daño a los seres vivos y al ecosistema.")
+
+@bot.command()
+async def Cuales_son_los_principales_tipos_de_contaminacion(ctx):
+    await ctx.send("Los principales tipos de contaminación son: contaminación del aire, contaminación del agua, contaminación del suelo y contaminación acústica.")
+
+@bot.command()
+async def Como_afecta_la_contaminacion_del_aire_a_la_salud(ctx):
+    await ctx.send("La contaminación del aire puede causar problemas respiratorios, enfermedades cardíacas y otros efectos negativos en la salud.")
+
+
+
+
+
+
+
+
+
+bot.run('Ponen el toekn aqui')
