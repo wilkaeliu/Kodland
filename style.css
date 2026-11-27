@@ -1,0 +1,57 @@
+body {
+    background-color: #fdfdfd;
+    text-align: center;
+}
+
+h1{
+    color: #b507be;
+}
+
+h2{
+    color: #c911d3;
+    transition: transform 0.3s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+    h2:hover {
+        transform: scale(1.1);
+    }
+
+}
+
+p{
+    color: #000000;
+}
+ul{
+    color: #000000;
+    list-style-type: none;
+    padding: 0;
+}
+
+h1, h2, p, ul {
+    font-family: 'Arial', sans-serif;
+        transition: transform 0.3s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+    h2:hover {
+        transform: scale(1.1);
+    }
+}
+
+body > * {
+    animation: aparecer linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
